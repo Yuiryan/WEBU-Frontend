@@ -240,14 +240,17 @@ export const CreateProblem = (): JSX.Element => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-tonal-a0 px-30 py-20 flex flex-col justify-between items-stretch overflow-hidden select-none">
-      <div className="bg-tonal-a20 w-full rounded-lg flex flex-col px-30 py-10 gap-10 relative">
-        <h1 className="text-neutral-a50 h1 text-center tracking-normal leading-tight uppercase">
+    <div className="w-full min-h-screen bg-tonal-a0 px-4 py-6 sm:px-10 sm:py-10 md:px-20 md:py-16 lg:px-30 lg:py-20 flex flex-col justify-between items-stretch overflow-hidden select-none">
+      <div className="bg-tonal-a20 w-full rounded-lg flex flex-col px-4 py-6 sm:px-8 sm:py-8 md:px-16 md:py-10 lg:px-30 gap-6 sm:gap-8 lg:gap-10 relative">
+        <h1 className="text-neutral-a50 text-xl sm:text-2xl md:text-3xl lg:h1 text-center tracking-normal leading-tight uppercase">
           CREATING NEW PROBLEM
         </h1>
 
-        <div className="flex items-center gap-4">
-          <label htmlFor="problem-name" className="text-neutral-a50 h4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <label
+            htmlFor="problem-name"
+            className="text-neutral-a50 h4 shrink-0"
+          >
             Name:
           </label>
           <input
@@ -260,7 +263,7 @@ export const CreateProblem = (): JSX.Element => {
           />
         </div>
 
-        <div className="flex gap-10">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 lg:gap-10">
           <SelectDropdown
             label="Select Tag"
             options={tagOptions}
@@ -289,7 +292,7 @@ export const CreateProblem = (): JSX.Element => {
             placeholder="Enter problem description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="px-4 py-2 bg-secondary-a10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black p4 whitespace-pre-wrap min-h-[150px]"
+            className="px-4 py-2 bg-secondary-a10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black p4 whitespace-pre-wrap min-h-[120px] sm:min-h-[150px]"
             rows={8}
           />
         </div>
@@ -307,14 +310,15 @@ export const CreateProblem = (): JSX.Element => {
           </div>
           <div className="border border-white/10 rounded-lg overflow-hidden bg-[#0a0f1a] p-2">
             <Editor
-              height="350px"
+              height="250px"
+              className="sm:!h-[300px] md:!h-[350px]"
               language={selectedLang}
               theme="webu-dark"
               value={code}
               onChange={(val) => setCode(val ?? '')}
               onMount={handleEditorMount}
               options={{
-                fontSize: 14,
+                fontSize: 13,
                 minimap: { enabled: false },
                 scrollBeyondLastLine: false,
                 wordWrap: 'on',
@@ -327,9 +331,9 @@ export const CreateProblem = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="flex justify-between items-center w-full mt-6">
+        <div className="flex justify-between items-center w-full mt-4 sm:mt-6 gap-4">
           <Button
-            className="w-fit flex items-center justify-center rounded-lg border-2 border-secondary-a70 px-6 py-2 h2 text-center"
+            className="w-fit flex items-center justify-center rounded-lg border-2 border-secondary-a70 px-4 py-2 sm:px-6 text-sm sm:h2 text-center"
             onClick={() => {
               navigate('/notebook');
             }}
@@ -339,7 +343,7 @@ export const CreateProblem = (): JSX.Element => {
           <Button
             isProcessing={isProcessing}
             type="button"
-            className="w-fit flex items-center justify-center rounded-lg border-2 border-secondary-a70 px-6 py-2 h2 text-center"
+            className="w-fit flex items-center justify-center rounded-lg border-2 border-secondary-a70 px-4 py-2 sm:px-6 text-sm sm:h2 text-center"
             onClick={() => {
               handleCreate();
             }}
